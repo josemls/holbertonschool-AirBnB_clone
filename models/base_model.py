@@ -7,7 +7,7 @@ import models
 
 
 """date and time"""
-dtm = "%Y-%m-%dT%H:%M:%S.%f"
+dateformat = "%Y-%m-%dT%H:%M:%S.%f"
 value = "2017-06-14T22:31:03.285259"
 
 class BaseModel:
@@ -37,11 +37,8 @@ class BaseModel:
         
     def to_dict(self):
         """Return a dictionary that contains all keys"""
-        dic = {
-
-            '__class__': self.__class__.__name__,
-            'updated_at': self.updated_at.strftime(dtm),
-            'id': self.id,
-            'created_at': self.created_at.strftime(dtm),
-        }
-        return dic
+        dict = self.__dict__.copy()
+        dict['__class__'] = type(self).__name__
+        dict['created_at'] = dict['created_at'].isoformat()
+        dict['updated_at'] = dict['updated_at'].isoformat()
+        return dict
