@@ -14,6 +14,12 @@ class BaseModel:
     """class that defines attributes for other classes"""
 
     def __init__(self, *args, **kwargs):
+        """Instances of the base model class.
+        Args:
+            id: unique identification.
+            created_at: datetime - datetime when an instance is created.
+            updated_at: datetime - datetime when an instance is modified.
+        """
         if len(kwargs) != 0:
             for key, value in kwargs.items():
                 if key != '__class__':
