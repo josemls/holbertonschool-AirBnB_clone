@@ -5,6 +5,8 @@ import uuid
 from datetime import datetime
 import models
 
+
+"""date and time"""
 dtm = "%Y-%m-%dT%H:%M:%S.%f"
 value = "2017-06-14T22:31:03.285259"
 
@@ -12,7 +14,14 @@ class BaseModel:
     """class that defines attributes for other classes"""
 
     def __init__(self, *args, **kwargs):
-
+        if len(kwargs) != 0:
+            for key, value in kwargs.items():
+                if key != '__class__':
+                    setattr(self, key, value)
+            self.id = str(uuid.uuid4())
+            self.created_at = datetime.now()
+            self.updated_at = self.created_at
+        else:        
         #assign id
         self.id = str(uuid.uuid4)
         #Assign date
