@@ -4,6 +4,7 @@
 import uuid
 from datetime import datetime
 import models
+import json
 
 
 """date and time"""
@@ -14,8 +15,7 @@ class BaseModel:
     """class that defines attributes for other classes"""
 
     def __init__(self, *args, **kwargs):
-        """Instances of the base model class.
-        Args:
+        """Instances of the base model.
             id: unique identification.
             created_at: datetime - datetime when an instance is created.
             updated_at: datetime - datetime when an instance is modified.
