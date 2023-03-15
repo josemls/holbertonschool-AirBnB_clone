@@ -22,12 +22,10 @@ class BaseModel:
             self.created_at = datetime.now()
             self.updated_at = self.created_at
         else:        
-        #assign id
-        self.id = str(uuid.uuid4)
-        #Assign date
-        self.created_at = datetime.now()
-        #update the date
-        self.updated_at = self.created_at
+            self.id = str(uuid.uuid4)
+            self.created_at = datetime.now()
+            self.updated_at = self.created_at
+            models.storage.new(self)
 
     def __str__(self):
         """Print name, id and dictionary"""
@@ -37,6 +35,7 @@ class BaseModel:
     def save(self):
         """Update instance attribute with date and hour"""
         self.updated_at = datetime.now()
+        models.storage.save()
         
     def to_dict(self):
         """Return a dictionary that contains all keys"""
