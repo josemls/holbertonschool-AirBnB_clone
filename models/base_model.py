@@ -11,7 +11,8 @@ value = "2017-06-14T22:31:03.285259"
 class BaseModel:
     """class that defines attributes for other classes"""
 
-    def __init__(self):
+    def __init__(self, *args, **kwargs):
+
         #assign id
         self.id = str(uuid.uuid4)
         #Assign date
