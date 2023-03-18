@@ -71,6 +71,28 @@ class HBNBCommand(cmd.Cmd):
                    class name and the ID
                 """
                 print(storage.all()[id_object])
+
+        def do_destroy(self, line):
+            """Destroys all items"""
+            args = line.split()
+            obj_dict = storage.all()
+
+            if not line:
+                print("** class name missing **")
+                return
+            elif not args[0] or args[0] not in classes:
+                print("** class doesn't exist **")
+                return
+            elif len(args) < 2:
+                print("** instance id missing **")
+                return
+            instance_key = "{}.{}".format(args[0], args[1])
+            if instance_key not in obj_dict:
+                print("** no instance found **")
+                return
+            else:
+                del obj_dict[instance_key]
+            storage.save()         
         
             
 if __name__ == '__main__':
