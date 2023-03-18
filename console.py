@@ -51,17 +51,19 @@ class HBNBCommand(cmd.Cmd):
             print("** class doesn't exist **")
     
     def do_show(self, line):
-        arg_list = line.split()
-        object_dict = storage.all()
-        if len(line) == 0:
+        args_list = line.split(" ")
+        if args_list[0] == "":
             print("** class name missing **")
-        elif arg_list[0] not in classes.keys():
+        elif args_list[0] not in classes.keys():
             print("** class doesn't exist **")
-        elif len(arg_list) < 2:
+        elif len(args_list) < 2:
             print("** instance id missing **")
-        
         else:
-            id_object = "{}.{}".format(arg_list[0], arg_list[1])
+            """ We need to check if the 'id' exists, to do so we need to
+            create id_object with the form Classname.id that is the key that
+            we will ask if is in Storge and retrieve the value for that key
+            """
+            id_object = "{}.{}".format(args_list[0], args_list[1])
             if id_object not in storage.all():
                 print("** no instance found **")
             else:
@@ -69,6 +71,7 @@ class HBNBCommand(cmd.Cmd):
                    class name and the ID
                 """
                 print(storage.all()[id_object])
+        
             
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
