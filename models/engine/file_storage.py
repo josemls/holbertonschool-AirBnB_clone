@@ -14,7 +14,7 @@ class FileStorage:
 
     def all(self):
         """Returns the dictionary pof objects"""
-        return self.__objects
+        return FileStorage.__objects
     
     def new(self, obj):
         """Set objects of key"""
@@ -29,11 +29,11 @@ class FileStorage:
             json.dump(objectdict, f)
     
     def reload(self):
-        """Deserialize the JSON file"""
-        try:
-            with open(self.__file_path, 'r', encoding="UTF8") as f:
-                obj_dir = json.loads(f.read())
-                for key, value in obj_dir.items():
+        """Deserialize the json file."""
+        if os.path.exists(self.__file_path):
+            with open(self.__file_path, mode='r') as file:
+                load = file.read()
+                new_dict = json.loads(load)
+                for key, value in new_dict.items():
                     self.__objects[key] = BaseModel(**value)
-        except:
-            pass
+            return
