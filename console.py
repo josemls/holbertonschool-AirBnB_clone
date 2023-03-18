@@ -13,6 +13,11 @@ from models.review import Review
 from models import storage
 
 
+classes = {"Amenity": Amenity, "BaseModel": BaseModel,
+              "City": City, "Place": Place, "Review": Review,
+              "State": State, "User": User}
+
+
 
 class HBNBCommand(cmd.Cmd):
     """
@@ -48,8 +53,12 @@ class HBNBCommand(cmd.Cmd):
     def do_show(self, line):
         arg_list = line.split()
         object_dict = storage.all()
-        if len(arg) == 0:
+        if len(line) == 0:
             print("** class name missing **")
-
+        elif arg_list[0] not in classes.keys():
+            print("** class doesn't exist **")
+        elif len(arg_list) < 2:
+            print("** instance id missing **")
+            
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
