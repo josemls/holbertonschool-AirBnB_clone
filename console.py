@@ -42,9 +42,9 @@ class HBNBCommand(cmd.Cmd):
                 print("** class doesn't exist **")
             else:
                 str = line + "()"
-                base_inst = eval(str)
-                base_inst.save()
-                print(base_inst.id)
+                instance = eval(str)
+                instance.save()
+                print(instance.id)
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
