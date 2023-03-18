@@ -29,12 +29,12 @@ We want to be able to manage the objects of our project:
 
 ## Commands
 
-Run console - ```./console.py```
-Quit console - ``` quit ```
-Help command - ``` help <command> ```
-Create object - ``` create <class> ```
-Show object - ``` show ```
-Destroy Object - ``` destroy <class> <id> ``
+Run console | ```./console.py```
+Quit console | ``` quit ```
+Help command | ``` help <command> ```
+Create object | ``` create <class> ```
+Show object | ``` show ```
+Destroy Object | ``` destroy <class> <id> ```
 
 
 
