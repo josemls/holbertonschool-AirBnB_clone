@@ -11,7 +11,7 @@ from models.amenity import Amenity
 from models.place import Place
 from models.review import Review
 from models import storage
-
+from models.base_model import BaseModel
 
 classes = {"Amenity": Amenity, "BaseModel": BaseModel,
               "City": City, "Place": Place, "Review": Review,
