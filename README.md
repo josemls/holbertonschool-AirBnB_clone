@@ -27,5 +27,14 @@ We want to be able to manage the objects of our project:
 -   What is  `**kwargs`  and how to use it
 -   How to handle named arguments in a function
 
+## Commands
+
+Run console - ```./console.py```
+Quit console - ``` quit ```
+Help command - ``` help <command> ```
+Create object - ``` create <class> ```
+Show object - ``` show ```
+Destroy Object - ``` destroy <class> <id> ``
+
 
 
